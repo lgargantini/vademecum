@@ -30,22 +30,22 @@ export interface CountryAuthority {
 
 export interface Presentation {
   id: number;
-  drugUnit: DOSE_QUANTITY_TYPE;
-  drugAmount?: number;
-  dosageForm: string;
+  drug_unit: DOSE_QUANTITY_TYPE;
+  drug_amount?: number;
+  dosage_form: string;
   doses: DosePresentation[];
 }
 
 export enum CATEGORIES {
-  YUYOS = "Yuyos",
-  ANTITUSIVOS = "Antitusivos",
-  ANTIPRETICOS = "Antipiréticos",
-  ANTIHISTAMINICOS = "Antihistamínicos",
-  ANTITERMICOS = "Antitermicos",
-  CORTICOIDES = "Corticoides",
-  ALERGIA = "Alergia",
-  GASTROINTESTINALES = "Gastrointestinales",
-  ANTIBIOTICOS = "Antibióticos",
+  HERBS = "herbs",
+  ANTITUSSIVES = "Antitusivos",
+  ANTIPYRETICS = "Antipyretics",
+  ANTIHISTAMINES = "Antihistamines",
+  ANTITHERMICS = "Antithermics",
+  CORTICOIDS = "Corticoids",
+  ALLERGY = "Allergy",
+  GASTROINTESTINALS = "Gastrointestinal",
+  ANTIBIOTICS = "Antibiotics",
 }
 
 export enum TARGET_POPULATION_PERIOD_TYPE {
@@ -77,15 +77,15 @@ export enum DOSE_FRECUENCY_TYPE {
 
 enum DOSE_QUANTITY_TYPE {
   ML = "ml",
-  DROPS = "gota",
-  COMPRIMIDO = "comprimido",
+  DROPS = "drop",
+  TABLET = "tablet",
   MILIGRAMS = "mg",
 }
 
 export interface Dose {
   label: string; // 2.5ml cada 12 hs
   unit: number; // 2.5
-  measure: DOSE_QUANTITY_TYPE; // ml|gotas
+  measure: DOSE_QUANTITY_TYPE; // ml|drops
   frecuency_type: DOSE_FRECUENCY_TYPE;
   frecuency_unit: number; // 6
   alternative_frecuency_unit?: number; //8
@@ -109,36 +109,36 @@ export interface DosePresentation {
 export interface Drug {
   id: number;
   name: string;
-  nonProprietaryName: string;
-  activeIngredient: string;
-  isProprietary: boolean;
+  non_proprietary_name: string;
+  active_ingredient: string;
+  is_proprietary: boolean;
   warning?: string;
   presentations: Presentation[];
   category?: CATEGORIES;
   brand: Brand;
-  recognizingAuthority: CountryAuthority;
+  recognizing_authority: CountryAuthority;
 }
 
 export const VADEMECUM_DATA: Drug[] = [
   // {
   //   id: 1,
   //   name: "CARBOCISTEINA",
-  //   nonProprietaryName: "Carboximetilcisteina",
-  //   activeIngredient: "Carboximetilcisteina",
-  //   isProprietary: true,
+  //   non_proprietary_name: "Carboximetilcisteina",
+  //   active_ingredient: "Carboximetilcisteina",
+  //   is_proprietary: true,
   //   brand: {
-  //     type: "Laboratorio",
+  //     type: "Lab",
   //     name: "CARBOCISTEINA",
   //   },
-  //   recognizingAuthority: {
+  //   recognizing_authority: {
   //     type: AUTHORITY_COUNTRY_TYPE.AR,
   //     url: AUTHORITY_COUNTRY_INFORMATION.AR,
   //   },
   //   warning: "No administrar a menores de 2 años",
   //   presentations: [
   //     {
-  //       drugUnit: DOSE_QUANTITY_TYPE.ML,
-  //       dosageForm: "Jarabe",
+  //       drug_unit: DOSE_QUANTITY_TYPE.ML,
+  //       dosage_form: "Jarabe",
   //       id: 3,
   //       doses: [
   //         {
@@ -217,22 +217,22 @@ export const VADEMECUM_DATA: Drug[] = [
   // {
   //   id: 2,
   //   name: "ACEMUK- TOFLUX",
-  //   nonProprietaryName: "N-acetilcisteina",
-  //   activeIngredient: "N-acetilcisteina",
-  //   isProprietary: true,
+  //   non_proprietary_name: "N-acetilcisteina",
+  //   active_ingredient: "N-acetilcisteina",
+  //   is_proprietary: true,
   //   warning: "No administrar a menores de 1 año",
   //   brand: {
-  //     type: "Laboratorio",
+  //     type: "Lab",
   //     name: "ACEMUK- TOFLUX",
   //   },
-  //   recognizingAuthority: {
+  //   recognizing_authority: {
   //     type: AUTHORITY_COUNTRY_TYPE.AR,
   //     url: AUTHORITY_COUNTRY_INFORMATION.AR,
   //   },
   //   presentations: [
   //     {
-  //       dosageForm: "Jarabe",
-  //       drugUnit: DOSE_QUANTITY_TYPE.ML,
+  //       dosage_form: "Jarabe",
+  //       drug_unit: DOSE_QUANTITY_TYPE.ML,
   //       id: 4,
   //       doses: [
   //         {
@@ -307,8 +307,8 @@ export const VADEMECUM_DATA: Drug[] = [
   //       ],
   //     },
   //     {
-  //       drugUnit: DOSE_QUANTITY_TYPE.ML,
-  //       dosageForm: "Efervescente",
+  //       drug_unit: DOSE_QUANTITY_TYPE.ML,
+  //       dosage_form: "Efervescente",
   //       id: 5,
   //       doses: [
   //         {
@@ -363,22 +363,22 @@ export const VADEMECUM_DATA: Drug[] = [
   //   id: 3,
   //   category: CATEGORIES.ANTIHISTAMINICOS,
   //   name: "MUCOLITIC INFANTIL",
-  //   nonProprietaryName: "Carboximetilcisteina",
-  //   activeIngredient: "Carboximetilcisteina",
-  //   isProprietary: true,
+  //   non_proprietary_name: "Carboximetilcisteina",
+  //   active_ingredient: "Carboximetilcisteina",
+  //   is_proprietary: true,
   //   warning: "No administrar a menores de 1 año",
   //   brand: {
-  //     type: "Laboratorio",
+  //     type: "Lab",
   //     name: "MUCOLITIC INFANTIL",
   //   },
-  //   recognizingAuthority: {
+  //   recognizing_authority: {
   //     type: AUTHORITY_COUNTRY_TYPE.AR,
   //     url: AUTHORITY_COUNTRY_INFORMATION.AR,
   //   },
   //   presentations: [
   //     {
-  //       drugUnit: DOSE_QUANTITY_TYPE.ML,
-  //       dosageForm: "Jarabe",
+  //       drug_unit: DOSE_QUANTITY_TYPE.ML,
+  //       dosage_form: "Jarabe",
   //       id: 6,
   //       doses: [
   //         {
@@ -457,24 +457,24 @@ export const VADEMECUM_DATA: Drug[] = [
   // },
   {
     id: 4,
-    category: CATEGORIES.ANTITERMICOS,
+    category: CATEGORIES.ANTITHERMICS,
     name: "TERMOFREN",
-    nonProprietaryName: "Paracetamol",
-    activeIngredient: "Paracetamol",
-    isProprietary: true,
+    non_proprietary_name: "Paracetamol",
+    active_ingredient: "Paracetamol",
+    is_proprietary: true,
     brand: {
-      type: "Laboratorio",
+      type: "Lab",
       name: "ROEMMERS",
     },
-    recognizingAuthority: {
+    recognizing_authority: {
       type: AUTHORITY_COUNTRY_TYPE.AR,
       url: AUTHORITY_COUNTRY_INFORMATION.AR,
     },
     presentations: [
       {
-        drugUnit: DOSE_QUANTITY_TYPE.ML,
-        dosageForm: "Jarabe 2%",
-        drugAmount: 120,
+        drug_unit: DOSE_QUANTITY_TYPE.ML,
+        dosage_form: "Jarabe 2%",
+        drug_amount: 120,
         id: 7,
         doses: [
           {
@@ -503,28 +503,28 @@ export const VADEMECUM_DATA: Drug[] = [
         ],
       },
       {
-        drugUnit: DOSE_QUANTITY_TYPE.ML,
-        dosageForm: "Gotas",
-        drugAmount: 20,
+        drug_unit: DOSE_QUANTITY_TYPE.ML,
+        dosage_form: "Drops",
+        drug_amount: 20,
         id: 8,
         doses: [
           {
             recommended_dose: {
-              label: "2 gotas por kg cada 6 hs",
+              label: "2 drops por kg cada 6 hs",
               measure: DOSE_QUANTITY_TYPE.DROPS,
               unit: 2,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
             },
             concentration: {
-              label: "5 mg / 1 gota",
+              label: "5 mg / 1 drop",
               measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
               unit: 5,
               volume: 1,
               volume_measure: DOSE_QUANTITY_TYPE.DROPS,
             },
             max_dose: {
-              label: "max 100 gotas",
+              label: "max 100 drops",
               measure: DOSE_QUANTITY_TYPE.DROPS,
               unit: 100,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
@@ -537,30 +537,30 @@ export const VADEMECUM_DATA: Drug[] = [
   },
   {
     id: 5,
-    category: CATEGORIES.ANTITERMICOS,
+    category: CATEGORIES.ANTITHERMICS,
     name: "TAFIROLITO",
-    nonProprietaryName: "Paracetamol",
-    activeIngredient: "Paracetamol",
-    isProprietary: true,
+    non_proprietary_name: "Paracetamol",
+    active_ingredient: "Paracetamol",
+    is_proprietary: true,
     brand: {
-      type: "Laboratorio",
+      type: "Lab",
       name: "GENOMA",
     },
-    recognizingAuthority: {
+    recognizing_authority: {
       type: AUTHORITY_COUNTRY_TYPE.AR,
       url: AUTHORITY_COUNTRY_INFORMATION.AR,
     },
     presentations: [
       {
-        drugUnit: DOSE_QUANTITY_TYPE.COMPRIMIDO,
-        dosageForm: "Comprimidos masticable 80 mg",
-        drugAmount: 20,
+        drug_unit: DOSE_QUANTITY_TYPE.TABLET,
+        dosage_form: "tablets masticable 80 mg",
+        drug_amount: 20,
         id: 9,
         doses: [
           {
             recommended_dose: {
               label: "1 unidad cada 8 kg",
-              measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              measure: DOSE_QUANTITY_TYPE.TABLET,
               unit: 1,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
@@ -570,11 +570,11 @@ export const VADEMECUM_DATA: Drug[] = [
               measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
               unit: 80,
               volume: 1,
-              volume_measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              volume_measure: DOSE_QUANTITY_TYPE.TABLET,
             },
             max_dose: {
-              label: "max 6 comprimidos",
-              measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              label: "max 6 tablets",
+              measure: DOSE_QUANTITY_TYPE.TABLET,
               unit: 6,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
@@ -583,15 +583,15 @@ export const VADEMECUM_DATA: Drug[] = [
         ],
       },
       {
-        drugUnit: DOSE_QUANTITY_TYPE.COMPRIMIDO,
-        dosageForm: "Comprimidos masticable 160 mg",
+        drug_unit: DOSE_QUANTITY_TYPE.TABLET,
+        dosage_form: "tablets masticable 160 mg",
         id: 10,
-        drugAmount:20,
+        drug_amount: 20,
         doses: [
           {
             recommended_dose: {
               label: "1 unidad cada 16 kg",
-              measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              measure: DOSE_QUANTITY_TYPE.TABLET,
               unit: 1,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
@@ -601,11 +601,11 @@ export const VADEMECUM_DATA: Drug[] = [
               measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
               unit: 160,
               volume: 1,
-              volume_measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              volume_measure: DOSE_QUANTITY_TYPE.TABLET,
             },
             max_dose: {
-              label: "max 3 comprimidos",
-              measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              label: "max 3 tablets",
+              measure: DOSE_QUANTITY_TYPE.TABLET,
               unit: 3,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
@@ -617,30 +617,30 @@ export const VADEMECUM_DATA: Drug[] = [
   },
   {
     id: 6,
-    category: CATEGORIES.ANTITERMICOS,
+    category: CATEGORIES.ANTITHERMICS,
     name: "TAFIROL",
-    nonProprietaryName: "Paracetamol",
-    activeIngredient: "Paracetamol",
-    isProprietary: true,
+    non_proprietary_name: "Paracetamol",
+    active_ingredient: "Paracetamol",
+    is_proprietary: true,
     brand: {
-      type: "Laboratorio",
+      type: "Lab",
       name: "GENOMA",
     },
-    recognizingAuthority: {
+    recognizing_authority: {
       type: AUTHORITY_COUNTRY_TYPE.AR,
       url: AUTHORITY_COUNTRY_INFORMATION.AR,
     },
     presentations: [
       {
-        drugUnit: DOSE_QUANTITY_TYPE.COMPRIMIDO,
-        dosageForm: "Comprimidos 500 mg",
-        drugAmount: 10,
+        drug_unit: DOSE_QUANTITY_TYPE.TABLET,
+        dosage_form: "tablets 500 mg",
+        drug_amount: 10,
         id: 11,
         doses: [
           {
             recommended_dose: {
               label: "1 comp / dosis",
-              measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              measure: DOSE_QUANTITY_TYPE.TABLET,
               unit: 1,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
@@ -650,11 +650,11 @@ export const VADEMECUM_DATA: Drug[] = [
               measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
               unit: 500,
               volume: 1,
-              volume_measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              volume_measure: DOSE_QUANTITY_TYPE.TABLET,
             },
             max_dose: {
               label: "max 1 comp / dosis",
-              measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              measure: DOSE_QUANTITY_TYPE.TABLET,
               unit: 1,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
@@ -663,15 +663,15 @@ export const VADEMECUM_DATA: Drug[] = [
         ],
       },
       {
-        drugUnit: DOSE_QUANTITY_TYPE.COMPRIMIDO,
-        dosageForm: "Comprimidos 500 mg",
-        drugAmount: 30,
+        drug_unit: DOSE_QUANTITY_TYPE.TABLET,
+        dosage_form: "tablets 500 mg",
+        drug_amount: 30,
         id: 12,
         doses: [
           {
             recommended_dose: {
               label: "1 comp / dosis",
-              measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              measure: DOSE_QUANTITY_TYPE.TABLET,
               unit: 1,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
@@ -681,11 +681,11 @@ export const VADEMECUM_DATA: Drug[] = [
               measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
               unit: 0.5,
               volume: 1,
-              volume_measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              volume_measure: DOSE_QUANTITY_TYPE.TABLET,
             },
             max_dose: {
               label: "max 1 comp / dosis",
-              measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              measure: DOSE_QUANTITY_TYPE.TABLET,
               unit: 1,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
@@ -697,30 +697,30 @@ export const VADEMECUM_DATA: Drug[] = [
   },
   {
     id: 7,
-    category: CATEGORIES.ANTITERMICOS,
+    category: CATEGORIES.ANTITHERMICS,
     name: "GENIOL",
-    nonProprietaryName: "Paracetamol",
-    activeIngredient: "Paracetamol",
-    isProprietary: true,
+    non_proprietary_name: "Paracetamol",
+    active_ingredient: "Paracetamol",
+    is_proprietary: true,
     brand: {
-      type: "Laboratorio",
+      type: "Lab",
       name: "ELEA",
     },
-    recognizingAuthority: {
+    recognizing_authority: {
       type: AUTHORITY_COUNTRY_TYPE.AR,
       url: AUTHORITY_COUNTRY_INFORMATION.AR,
     },
     presentations: [
       {
-        drugUnit: DOSE_QUANTITY_TYPE.COMPRIMIDO,
-        dosageForm: "Comprimidos 500 mg",
-        drugAmount: 16,
+        drug_unit: DOSE_QUANTITY_TYPE.TABLET,
+        dosage_form: "tablets 500 mg",
+        drug_amount: 16,
         id: 13,
         doses: [
           {
             recommended_dose: {
               label: "1 comp / dosis",
-              measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              measure: DOSE_QUANTITY_TYPE.TABLET,
               unit: 1,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
@@ -730,11 +730,11 @@ export const VADEMECUM_DATA: Drug[] = [
               measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
               unit: 500,
               volume: 1,
-              volume_measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              volume_measure: DOSE_QUANTITY_TYPE.TABLET,
             },
             max_dose: {
               label: "max 1 comp / dosis",
-              measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              measure: DOSE_QUANTITY_TYPE.TABLET,
               unit: 1,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
@@ -747,22 +747,22 @@ export const VADEMECUM_DATA: Drug[] = [
   {
     id: 8,
     name: "BENADRYL",
-    nonProprietaryName: "Difenhidramina",
-    activeIngredient: "Difenhidramina",
+    non_proprietary_name: "Difenhidramina",
+    active_ingredient: "Difenhidramina",
     brand: {
-      type: "Laboratorio",
+      type: "Lab",
       name: "BENADRYL",
     },
-    recognizingAuthority: {
+    recognizing_authority: {
       type: AUTHORITY_COUNTRY_TYPE.AR,
       url: AUTHORITY_COUNTRY_INFORMATION.AR,
     },
-    isProprietary: true,
+    is_proprietary: true,
     warning: "No administrar a menores de 2 años",
     presentations: [
       {
-        drugUnit: DOSE_QUANTITY_TYPE.ML,
-        dosageForm: "Jarabe",
+        drug_unit: DOSE_QUANTITY_TYPE.ML,
+        dosage_form: "Jarabe",
         id: 8,
         doses: [
           {
@@ -816,25 +816,25 @@ export const VADEMECUM_DATA: Drug[] = [
   },
   {
     id: 9,
-    category: CATEGORIES.ANTITERMICOS,
+    category: CATEGORIES.ANTITHERMICS,
     name: "DIOXADOL",
-    nonProprietaryName: "Dipirona/Paracetamol",
-    activeIngredient: "Dipirona/Paracetamol",
-    isProprietary: true,
+    non_proprietary_name: "Dipirona/Paracetamol",
+    active_ingredient: "Dipirona/Paracetamol",
+    is_proprietary: true,
     warning: "No administrar a menores de 2 años",
     brand: {
-      type: "Laboratorio",
+      type: "Lab",
       name: "MONTPELLIER",
     },
-    recognizingAuthority: {
+    recognizing_authority: {
       type: AUTHORITY_COUNTRY_TYPE.AR,
       url: AUTHORITY_COUNTRY_INFORMATION.AR,
     },
     presentations: [
       {
-        drugUnit: DOSE_QUANTITY_TYPE.ML,
-        dosageForm: "Jarabe",
-        drugAmount: 120,
+        drug_unit: DOSE_QUANTITY_TYPE.ML,
+        dosage_form: "Jarabe",
+        drug_amount: 120,
         id: 9,
         doses: [
           {
@@ -863,28 +863,28 @@ export const VADEMECUM_DATA: Drug[] = [
         ],
       },
       {
-        drugUnit: DOSE_QUANTITY_TYPE.ML,
-        dosageForm: "Gotas",
-        drugAmount: 30,
+        drug_unit: DOSE_QUANTITY_TYPE.ML,
+        dosage_form: "Drops",
+        drug_amount: 30,
         id: 10,
         doses: [
           {
             recommended_dose: {
-              label: "0.5 gotas por kg",
+              label: "0.5 drops por kg",
               measure: DOSE_QUANTITY_TYPE.DROPS,
               unit: 0.5,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
             },
             concentration: {
-              label: "20 mg /1 gota",
+              label: "20 mg /1 drop",
               measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
               unit: 0.02,
               volume: 1,
               volume_measure: DOSE_QUANTITY_TYPE.DROPS,
             },
             max_dose: {
-              label: "max 50 gotas",
+              label: "max 50 drops",
               measure: DOSE_QUANTITY_TYPE.DROPS,
               unit: 50,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
@@ -898,22 +898,22 @@ export const VADEMECUM_DATA: Drug[] = [
   {
     id: 10,
     name: "FEBRATIC",
-    nonProprietaryName: "Ibuprofeno",
-    activeIngredient: "Ibuprofeno",
-    isProprietary: true,
+    non_proprietary_name: "Ibuprofeno",
+    active_ingredient: "Ibuprofeno",
+    is_proprietary: true,
     brand: {
-      type: "Laboratorio",
+      type: "Lab",
       name: "ROEMMERS",
     },
-    recognizingAuthority: {
+    recognizing_authority: {
       type: AUTHORITY_COUNTRY_TYPE.AR,
       url: AUTHORITY_COUNTRY_INFORMATION.AR,
     },
     presentations: [
       {
-        drugUnit: DOSE_QUANTITY_TYPE.ML,
-        dosageForm: "Jarabe 2%",
-        drugAmount: 100,
+        drug_unit: DOSE_QUANTITY_TYPE.ML,
+        dosage_form: "Jarabe 2%",
+        drug_amount: 100,
         id: 10,
         doses: [
           {
@@ -935,9 +935,9 @@ export const VADEMECUM_DATA: Drug[] = [
         ],
       },
       {
-        drugUnit: DOSE_QUANTITY_TYPE.ML,
-        dosageForm: "Jarabe 4%",
-        drugAmount: 100,
+        drug_unit: DOSE_QUANTITY_TYPE.ML,
+        dosage_form: "Jarabe 4%",
+        drug_amount: 100,
         id: 11,
         doses: [
           {
@@ -970,22 +970,22 @@ export const VADEMECUM_DATA: Drug[] = [
   {
     id: 11,
     name: "ACTRON PEDIATRICO",
-    nonProprietaryName: "Ibuprofeno",
-    activeIngredient: "Ibuprofeno",
-    isProprietary: true,
+    non_proprietary_name: "Ibuprofeno",
+    active_ingredient: "Ibuprofeno",
+    is_proprietary: true,
     brand: {
-      type: "Laboratorio",
+      type: "Lab",
       name: "BAYER",
     },
-    recognizingAuthority: {
+    recognizing_authority: {
       type: AUTHORITY_COUNTRY_TYPE.AR,
       url: AUTHORITY_COUNTRY_INFORMATION.AR,
     },
     presentations: [
       {
-        drugUnit: DOSE_QUANTITY_TYPE.ML,
-        dosageForm: "Jarabe 2%",
-        drugAmount: 100,
+        drug_unit: DOSE_QUANTITY_TYPE.ML,
+        dosage_form: "Jarabe 2%",
+        drug_amount: 100,
         id: 12,
         doses: [
           {
@@ -1014,9 +1014,9 @@ export const VADEMECUM_DATA: Drug[] = [
         ],
       },
       {
-        drugUnit: DOSE_QUANTITY_TYPE.ML,
-        dosageForm: "Jarabe 4%",
-        drugAmount: 100,
+        drug_unit: DOSE_QUANTITY_TYPE.ML,
+        dosage_form: "Jarabe 4%",
+        drug_amount: 100,
         id: 13,
         doses: [
           {
@@ -1045,9 +1045,9 @@ export const VADEMECUM_DATA: Drug[] = [
         ],
       },
       {
-        drugUnit: DOSE_QUANTITY_TYPE.ML,
-        dosageForm: "Jarabe 4%",
-        drugAmount: 180,
+        drug_unit: DOSE_QUANTITY_TYPE.ML,
+        dosage_form: "Jarabe 4%",
+        drug_amount: 180,
         id: 14,
         doses: [
           {
@@ -1079,28 +1079,28 @@ export const VADEMECUM_DATA: Drug[] = [
   },
   {
     name: "ACTRON",
-    nonProprietaryName: "Ibuprofeno",
-    activeIngredient: "Ibuprofeno",
-    isProprietary: true,
+    non_proprietary_name: "Ibuprofeno",
+    active_ingredient: "Ibuprofeno",
+    is_proprietary: true,
     brand: {
-      type: "Laboratorio",
+      type: "Lab",
       name: "BAYER",
     },
-    recognizingAuthority: {
+    recognizing_authority: {
       type: AUTHORITY_COUNTRY_TYPE.AR,
       url: AUTHORITY_COUNTRY_INFORMATION.AR,
     },
     presentations: [
       {
-        drugUnit: DOSE_QUANTITY_TYPE.COMPRIMIDO,
-        dosageForm: "Cápsulas blandas 400 mg",
-        drugAmount: 10,
+        drug_unit: DOSE_QUANTITY_TYPE.TABLET,
+        dosage_form: "Tablets blandas 400 mg",
+        drug_amount: 10,
         id: 15,
         doses: [
           {
             recommended_dose: {
               label: "1 comp cada 6 hs",
-              measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              measure: DOSE_QUANTITY_TYPE.TABLET,
               unit: 1,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
@@ -1110,21 +1110,21 @@ export const VADEMECUM_DATA: Drug[] = [
               measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
               unit: 400,
               volume: 1,
-              volume_measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              volume_measure: DOSE_QUANTITY_TYPE.TABLET,
             }
           },
         ],
       },
       {
-        drugUnit: DOSE_QUANTITY_TYPE.COMPRIMIDO,
-        dosageForm: "Cápsulas blandas 600 mg",
-        drugAmount: 10,
+        drug_unit: DOSE_QUANTITY_TYPE.TABLET,
+        dosage_form: "Tablets blandas 600 mg",
+        drug_amount: 10,
         id: 16,
         doses: [
           {
             recommended_dose: {
               label: "1 comp cada 6 hs",
-              measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              measure: DOSE_QUANTITY_TYPE.TABLET,
               unit: 1,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
@@ -1134,7 +1134,7 @@ export const VADEMECUM_DATA: Drug[] = [
               measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
               unit: 600,
               volume: 1,
-              volume_measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              volume_measure: DOSE_QUANTITY_TYPE.TABLET,
             }
           },
         ],
@@ -1144,22 +1144,22 @@ export const VADEMECUM_DATA: Drug[] = [
   },
   {
     name: "IBUPIRAC",
-    nonProprietaryName: "Ibuprofeno",
-    activeIngredient: "Ibuprofeno",
-    isProprietary: true,
+    non_proprietary_name: "Ibuprofeno",
+    active_ingredient: "Ibuprofeno",
+    is_proprietary: true,
     brand: {
-      type: "Laboratorio",
+      type: "Lab",
       name: "PFIZER",
     },
-    recognizingAuthority: {
+    recognizing_authority: {
       type: AUTHORITY_COUNTRY_TYPE.AR,
       url: AUTHORITY_COUNTRY_INFORMATION.AR,
     },
     presentations: [
       {
-        drugUnit: DOSE_QUANTITY_TYPE.ML,
-        dosageForm: "Jarabe 2%",
-        drugAmount: 110,
+        drug_unit: DOSE_QUANTITY_TYPE.ML,
+        dosage_form: "Jarabe 2%",
+        drug_amount: 110,
         id: 17,
         doses: [
           {
@@ -1188,15 +1188,15 @@ export const VADEMECUM_DATA: Drug[] = [
         ],
       },
       {
-        drugUnit: DOSE_QUANTITY_TYPE.COMPRIMIDO,
-        dosageForm: "Comp 400 mg",
-        drugAmount: 12,
+        drug_unit: DOSE_QUANTITY_TYPE.TABLET,
+        dosage_form: "Comp 400 mg",
+        drug_amount: 12,
         id: 18,
         doses: [
           {
             recommended_dose: {
               label: "1 comp cada 6 hs",
-              measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              measure: DOSE_QUANTITY_TYPE.TABLET,
               unit: 1,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
@@ -1210,7 +1210,7 @@ export const VADEMECUM_DATA: Drug[] = [
             },
             max_dose: {
               label: "max 1 comp cada 6 hs",
-              measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              measure: DOSE_QUANTITY_TYPE.TABLET,
               unit: 1,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
@@ -1223,22 +1223,22 @@ export const VADEMECUM_DATA: Drug[] = [
   },
   {
     name: "IBUPIRAC",
-    nonProprietaryName: "Ibuprofeno",
-    activeIngredient: "Ibuprofeno",
-    isProprietary: true,
+    non_proprietary_name: "Ibuprofeno",
+    active_ingredient: "Ibuprofeno",
+    is_proprietary: true,
     brand: {
-      type: "Laboratorio",
+      type: "Lab",
       name: "ELEA",
     },
-    recognizingAuthority: {
+    recognizing_authority: {
       type: AUTHORITY_COUNTRY_TYPE.AR,
       url: AUTHORITY_COUNTRY_INFORMATION.AR,
     },
     presentations: [
       {
-        drugUnit: DOSE_QUANTITY_TYPE.ML,
-        dosageForm: "Jarabe 4%",
-        drugAmount: 200,
+        drug_unit: DOSE_QUANTITY_TYPE.ML,
+        dosage_form: "Jarabe 4%",
+        drug_amount: 200,
         id: 20,
         doses: [
           {
@@ -1271,28 +1271,28 @@ export const VADEMECUM_DATA: Drug[] = [
   },
   {
     name: "IBUPIRETA",
-    nonProprietaryName: "Ibuprofeno",
-    activeIngredient: "Ibuprofeno",
-    isProprietary: true,
+    non_proprietary_name: "Ibuprofeno",
+    active_ingredient: "Ibuprofeno",
+    is_proprietary: true,
     brand: {
-      type: "Laboratorio",
+      type: "Lab",
       name: "URUFARMA",
     },
-    recognizingAuthority: {
+    recognizing_authority: {
       type: AUTHORITY_COUNTRY_TYPE.AR,
       url: AUTHORITY_COUNTRY_INFORMATION.AR,
     },
     presentations: [
       {
-        drugUnit: DOSE_QUANTITY_TYPE.COMPRIMIDO,
-        dosageForm: "Comprimidos masticable x 100 mg",
-        drugAmount: 10,
+        drug_unit: DOSE_QUANTITY_TYPE.TABLET,
+        dosage_form: "tablets masticable x 100 mg",
+        drug_amount: 10,
         id: 21,
         doses: [
           {
             recommended_dose: {
               label: "1 comp cada 6 hs",
-              measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              measure: DOSE_QUANTITY_TYPE.TABLET,
               unit: 1,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
@@ -1302,11 +1302,11 @@ export const VADEMECUM_DATA: Drug[] = [
               measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
               unit: 100,
               volume: 1,
-              volume_measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              volume_measure: DOSE_QUANTITY_TYPE.TABLET,
             },
             max_dose: {
               label: "max 4 comp cada 6 hs",
-              measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              measure: DOSE_QUANTITY_TYPE.TABLET,
               unit: 4,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
@@ -1319,28 +1319,28 @@ export const VADEMECUM_DATA: Drug[] = [
   },
   {
     name: "IBUPIRETA JUNIORS",
-    nonProprietaryName: "Ibuprofeno",
-    activeIngredient: "Ibuprofeno",
-    isProprietary: true,
+    non_proprietary_name: "Ibuprofeno",
+    active_ingredient: "Ibuprofeno",
+    is_proprietary: true,
     brand: {
-      type: "Laboratorio",
+      type: "Lab",
       name: "ELEA",
     },
-    recognizingAuthority: {
+    recognizing_authority: {
       type: AUTHORITY_COUNTRY_TYPE.AR,
       url: AUTHORITY_COUNTRY_INFORMATION.AR,
     },
     presentations: [
       {
-        drugUnit: DOSE_QUANTITY_TYPE.COMPRIMIDO,
-        dosageForm: "Comprimidos masticable x 200 mg",
-        drugAmount: 20,
+        drug_unit: DOSE_QUANTITY_TYPE.TABLET,
+        dosage_form: "tablets masticable x 200 mg",
+        drug_amount: 20,
         id: 22,
         doses: [
           {
             recommended_dose: {
               label: "1 comp cada 6 hs",
-              measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              measure: DOSE_QUANTITY_TYPE.TABLET,
               unit: 1,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
@@ -1350,11 +1350,11 @@ export const VADEMECUM_DATA: Drug[] = [
               measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
               unit: 200,
               volume: 1,
-              volume_measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              volume_measure: DOSE_QUANTITY_TYPE.TABLET,
             },
             max_dose: {
               label: "max 2 comp cada 6 hs",
-              measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              measure: DOSE_QUANTITY_TYPE.TABLET,
               unit: 2,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
@@ -1367,22 +1367,22 @@ export const VADEMECUM_DATA: Drug[] = [
   },
   {
     name: "NOVALGINA",
-    nonProprietaryName: "Metamizol",
-    activeIngredient: "Metamizol",
-    isProprietary: true,
+    non_proprietary_name: "Metamizol",
+    active_ingredient: "Metamizol",
+    is_proprietary: true,
     brand: {
-      type: "Laboratorio",
+      type: "Lab",
       name: "SANOFI",
     },
-    recognizingAuthority: {
+    recognizing_authority: {
       type: AUTHORITY_COUNTRY_TYPE.AR,
       url: AUTHORITY_COUNTRY_INFORMATION.AR,
     },
     presentations: [
       {
-        drugUnit: DOSE_QUANTITY_TYPE.ML,
-        dosageForm: "Jarabe 50 mg/ml",
-        drugAmount: 100,
+        drug_unit: DOSE_QUANTITY_TYPE.ML,
+        dosage_form: "Jarabe 50 mg/ml",
+        drug_amount: 100,
         id: 23,
         doses: [
           {
@@ -1411,28 +1411,28 @@ export const VADEMECUM_DATA: Drug[] = [
         ],
       },
       {
-        drugUnit: DOSE_QUANTITY_TYPE.ML,
-        dosageForm: "Gotas 500 mg/ml",
-        drugAmount: 20,
+        drug_unit: DOSE_QUANTITY_TYPE.ML,
+        dosage_form: "Drops 500 mg/ml",
+        drug_amount: 20,
         id: 24,
         doses: [
           {
             recommended_dose: {
-              label: "0.4 gotas por kg",
+              label: "0.4 drops por kg",
               measure: DOSE_QUANTITY_TYPE.DROPS,
               unit: 0.4,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
             },
             concentration: {
-              label: "500 mg / 1 gota",
+              label: "500 mg / 1 drop",
               measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
               unit: 500,
               volume: 1,
               volume_measure: DOSE_QUANTITY_TYPE.DROPS,
             },
             max_dose: {
-              label: "max 20-40 gotas",
+              label: "max 20-40 drops",
               measure: DOSE_QUANTITY_TYPE.DROPS,
               unit: 40,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
@@ -1442,15 +1442,15 @@ export const VADEMECUM_DATA: Drug[] = [
         ],
       },
       {
-        drugUnit: DOSE_QUANTITY_TYPE.COMPRIMIDO,
-        dosageForm: "Comprimidos 500 mg",
-        drugAmount: 10,
+        drug_unit: DOSE_QUANTITY_TYPE.TABLET,
+        dosage_form: "tablets 500 mg",
+        drug_amount: 10,
         id: 25,
         doses: [
           {
             recommended_dose: {
-              label: "1-2 comprimidos",
-              measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              label: "1-2 tablets",
+              measure: DOSE_QUANTITY_TYPE.TABLET,
               unit: 1,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
@@ -1460,11 +1460,11 @@ export const VADEMECUM_DATA: Drug[] = [
               measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
               unit: 0.5,
               volume: 1,
-              volume_measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              volume_measure: DOSE_QUANTITY_TYPE.TABLET,
             },
             max_dose: {
-              label: "max 1-2 comprimidos",
-              measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+              label: "max 1-2 tablets",
+              measure: DOSE_QUANTITY_TYPE.TABLET,
               unit: 2,
               frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
               frecuency_unit: 6,
@@ -1477,27 +1477,27 @@ export const VADEMECUM_DATA: Drug[] = [
   },
 {
   name: "BETACORT",
-  nonProprietaryName: "Betametasona",
-  activeIngredient: "Betametasona",
-  isProprietary: true,
+  non_proprietary_name: "Betametasona",
+  active_ingredient: "Betametasona",
+  is_proprietary: true,
   brand: {
-    type: "Laboratorio",
+    type: "Lab",
     name: "CASSARA",
   },
-  recognizingAuthority: {
+  recognizing_authority: {
     type: AUTHORITY_COUNTRY_TYPE.AR,
     url: AUTHORITY_COUNTRY_INFORMATION.AR,
   },
   presentations: [
     {
-      drugUnit: DOSE_QUANTITY_TYPE.ML,
-      dosageForm: "Gotas",
-      drugAmount: 15,
+      drug_unit: DOSE_QUANTITY_TYPE.ML,
+      dosage_form: "Drops",
+      drug_amount: 15,
       id: 26,
       doses: [
         {
           recommended_dose: {
-            label: "1 gota por kg",
+            label: "1 drop por kg",
             measure: DOSE_QUANTITY_TYPE.DROPS,
             unit: 1,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
@@ -1511,7 +1511,7 @@ export const VADEMECUM_DATA: Drug[] = [
             volume_measure: DOSE_QUANTITY_TYPE.ML,
           },
           max_dose: {
-            label: "40 gotas",
+            label: "40 drops",
             measure: DOSE_QUANTITY_TYPE.DROPS,
             unit: 40,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
@@ -1521,14 +1521,14 @@ export const VADEMECUM_DATA: Drug[] = [
       ],
     },
     {
-      drugUnit: DOSE_QUANTITY_TYPE.ML,
-      dosageForm: "Gotas",
-      drugAmount: 30,
+      drug_unit: DOSE_QUANTITY_TYPE.ML,
+      dosage_form: "Drops",
+      drug_amount: 30,
       id: 27,
       doses: [
         {
           recommended_dose: {
-            label: "1 gota por kg",
+            label: "1 drop por kg",
             measure: DOSE_QUANTITY_TYPE.DROPS,
             unit: 1,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
@@ -1542,7 +1542,7 @@ export const VADEMECUM_DATA: Drug[] = [
             volume_measure: DOSE_QUANTITY_TYPE.ML,
           },
           max_dose: {
-            label: "40 gotas",
+            label: "40 drops",
             measure: DOSE_QUANTITY_TYPE.DROPS,
             unit: 40,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
@@ -1556,41 +1556,41 @@ export const VADEMECUM_DATA: Drug[] = [
 },
 {
   name: "CORTICAS",
-  nonProprietaryName: "Dexametasona",
-  activeIngredient: "Dexametasona",
-  isProprietary: true,
+  non_proprietary_name: "Dexametasona",
+  active_ingredient: "Dexametasona",
+  is_proprietary: true,
   brand: {
-    type: "Laboratorio",
+    type: "Lab",
     name: "CASSACO",
   },
-  recognizingAuthority: {
+  recognizing_authority: {
     type: AUTHORITY_COUNTRY_TYPE.AR,
     url: AUTHORITY_COUNTRY_INFORMATION.AR,
   },
   presentations: [
     {
-      drugUnit: DOSE_QUANTITY_TYPE.ML,
-      dosageForm: "Gotas",
-      drugAmount: 30,
+      drug_unit: DOSE_QUANTITY_TYPE.ML,
+      dosage_form: "Drops",
+      drug_amount: 30,
       id: 28,
       doses: [
         {
           recommended_dose: {
-            label: "1 gota por kg",
+            label: "1 drop por kg",
             measure: DOSE_QUANTITY_TYPE.DROPS,
             unit: 1,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
             frecuency_unit: 8,
           },
           concentration: {
-            label: "0.03 mg / 1 gota",
+            label: "0.03 mg / 1 drop",
             measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
             unit: 0.03,
             volume: 1,
             volume_measure: DOSE_QUANTITY_TYPE.DROPS,
           },
           max_dose: {
-            label: "40 gotas",
+            label: "40 drops",
             measure: DOSE_QUANTITY_TYPE.DROPS,
             unit: 40,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
@@ -1600,15 +1600,15 @@ export const VADEMECUM_DATA: Drug[] = [
       ],
     },
     {
-      drugUnit: DOSE_QUANTITY_TYPE.COMPRIMIDO,
-      dosageForm: "Comprimidos 0.6 mg",
-      drugAmount: 30,
+      drug_unit: DOSE_QUANTITY_TYPE.TABLET,
+      dosage_form: "tablets 0.6 mg",
+      drug_amount: 30,
       id: 29,
       doses: [
         {
           recommended_dose: {
-            label: "1-2 comprimidos",
-            measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+            label: "1-2 tablets",
+            measure: DOSE_QUANTITY_TYPE.TABLET,
             unit: 1,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
             frecuency_unit: 8,
@@ -1618,11 +1618,11 @@ export const VADEMECUM_DATA: Drug[] = [
             measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
             unit: 0.6,
             volume: 1,
-            volume_measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+            volume_measure: DOSE_QUANTITY_TYPE.TABLET,
           },
           max_dose: {
-            label: "1-2 comprimidos",
-            measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+            label: "1-2 tablets",
+            measure: DOSE_QUANTITY_TYPE.TABLET,
             unit: 2,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
             frecuency_unit: 8,
@@ -1631,15 +1631,15 @@ export const VADEMECUM_DATA: Drug[] = [
       ],
     },
     {
-      drugUnit: DOSE_QUANTITY_TYPE.COMPRIMIDO,
-      dosageForm: "Comprimidos 1.2 mg",
-      drugAmount: 30,
+      drug_unit: DOSE_QUANTITY_TYPE.TABLET,
+      dosage_form: "tablets 1.2 mg",
+      drug_amount: 30,
       id: 30,
       doses: [
         {
           recommended_dose: {
-            label: "1 comprimido",
-            measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+            label: "1 tablet",
+            measure: DOSE_QUANTITY_TYPE.TABLET,
             unit: 1,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
             frecuency_unit: 8,
@@ -1649,11 +1649,11 @@ export const VADEMECUM_DATA: Drug[] = [
             measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
             unit: 1.2,
             volume: 1,
-            volume_measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+            volume_measure: DOSE_QUANTITY_TYPE.TABLET,
           },
           max_dose: {
-            label: "1 comprimido",
-            measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+            label: "1 tablet",
+            measure: DOSE_QUANTITY_TYPE.TABLET,
             unit: 1,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
             frecuency_unit: 8,
@@ -1666,41 +1666,41 @@ export const VADEMECUM_DATA: Drug[] = [
 },
 {
   name: "CORTEROID",
-  nonProprietaryName: "Dexametasona",
-  activeIngredient: "Dexametasona",
-  isProprietary: true,
+  non_proprietary_name: "Dexametasona",
+  active_ingredient: "Dexametasona",
+  is_proprietary: true,
   brand: {
-    type: "Laboratorio",
+    type: "Lab",
     name: "MONTPELLIER",
   },
-  recognizingAuthority: {
+  recognizing_authority: {
     type: AUTHORITY_COUNTRY_TYPE.AR,
     url: AUTHORITY_COUNTRY_INFORMATION.AR,
   },
   presentations: [
     {
-      drugUnit: DOSE_QUANTITY_TYPE.ML,
-      dosageForm: "Gotas",
-      drugAmount: 30,
+      drug_unit: DOSE_QUANTITY_TYPE.ML,
+      dosage_form: "Drops",
+      drug_amount: 30,
       id: 31,
       doses: [
         {
           recommended_dose: {
-            label: "1 gota por kg",
+            label: "1 drop por kg",
             measure: DOSE_QUANTITY_TYPE.DROPS,
             unit: 1,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
             frecuency_unit: 8,
           },
           concentration: {
-            label: "0.03 mg / 1 gota",
+            label: "0.03 mg / 1 drop",
             measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
             unit: 0.03,
             volume: 1,
             volume_measure: DOSE_QUANTITY_TYPE.DROPS,
           },
           max_dose: {
-            label: "40 gotas",
+            label: "40 drops",
             measure: DOSE_QUANTITY_TYPE.DROPS,
             unit: 40,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
@@ -1710,15 +1710,15 @@ export const VADEMECUM_DATA: Drug[] = [
       ],
     },
     {
-      drugUnit: DOSE_QUANTITY_TYPE.COMPRIMIDO,
-      dosageForm: "Comprimidos 0.6 mg",
-      drugAmount: 30,
+      drug_unit: DOSE_QUANTITY_TYPE.TABLET,
+      dosage_form: "tablets 0.6 mg",
+      drug_amount: 30,
       id: 32,
       doses: [
         {
           recommended_dose: {
-            label: "1-2 comprimidos",
-            measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+            label: "1-2 tablets",
+            measure: DOSE_QUANTITY_TYPE.TABLET,
             unit: 1,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
             frecuency_unit: 8,
@@ -1728,11 +1728,11 @@ export const VADEMECUM_DATA: Drug[] = [
             measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
             unit: 0.6,
             volume: 1,
-            volume_measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+            volume_measure: DOSE_QUANTITY_TYPE.TABLET,
           },
           max_dose: {
-            label: "1-2 comprimidos",
-            measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+            label: "1-2 tablets",
+            measure: DOSE_QUANTITY_TYPE.TABLET,
             unit: 2,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
             frecuency_unit: 8,
@@ -1741,15 +1741,15 @@ export const VADEMECUM_DATA: Drug[] = [
       ],
     },
     {
-      drugUnit: DOSE_QUANTITY_TYPE.COMPRIMIDO,
-      dosageForm: "Comprimidos 1.2 mg",
-      drugAmount: 30,
+      drug_unit: DOSE_QUANTITY_TYPE.TABLET,
+      dosage_form: "tablets 1.2 mg",
+      drug_amount: 30,
       id: 33,
       doses: [
         {
           recommended_dose: {
-            label: "1 comprimido",
-            measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+            label: "1 tablet",
+            measure: DOSE_QUANTITY_TYPE.TABLET,
             unit: 1,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
             frecuency_unit: 8,
@@ -1759,11 +1759,11 @@ export const VADEMECUM_DATA: Drug[] = [
             measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
             unit: 1.2,
             volume: 1,
-            volume_measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+            volume_measure: DOSE_QUANTITY_TYPE.TABLET,
           },
           max_dose: {
-            label: "1 comprimido",
-            measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+            label: "1 tablet",
+            measure: DOSE_QUANTITY_TYPE.TABLET,
             unit: 1,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
             frecuency_unit: 8,
@@ -1776,41 +1776,41 @@ export const VADEMECUM_DATA: Drug[] = [
 },
 {
   name: "DELTISONA B",
-  nonProprietaryName: "Metilprednisolona",
-  activeIngredient: "Metilprednisolona",
-  isProprietary: true,
+  non_proprietary_name: "Metilprednisolona",
+  active_ingredient: "Metilprednisolona",
+  is_proprietary: true,
   brand: {
-    type: "Laboratorio",
+    type: "Lab",
     name: "ELEA",
   },
-  recognizingAuthority: {
+  recognizing_authority: {
     type: AUTHORITY_COUNTRY_TYPE.AR,
     url: AUTHORITY_COUNTRY_INFORMATION.AR,
   },
   presentations: [
     {
-      drugUnit: DOSE_QUANTITY_TYPE.ML,
-      dosageForm: "Gotas",
-      drugAmount: 20,
+      drug_unit: DOSE_QUANTITY_TYPE.ML,
+      dosage_form: "Drops",
+      drug_amount: 20,
       id: 34,
       doses: [
         {
           recommended_dose: {
-            label: "0.2 mg por gota",
+            label: "0.2 mg por drop",
             measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
             unit: 0.2,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
             frecuency_unit: 8,
           },
           concentration: {
-            label: "0.2 mg / 1 gota",
+            label: "0.2 mg / 1 drop",
             measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
             unit: 0.2,
             volume: 1,
             volume_measure: DOSE_QUANTITY_TYPE.DROPS,
           },
           max_dose: {
-            label: "65 gotas",
+            label: "65 drops",
             measure: DOSE_QUANTITY_TYPE.DROPS,
             unit: 65,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
@@ -1820,15 +1820,15 @@ export const VADEMECUM_DATA: Drug[] = [
       ],
     },
     {
-      drugUnit: DOSE_QUANTITY_TYPE.COMPRIMIDO,
-      dosageForm: "Comprimidos 4 mg",
-      drugAmount: 20,
+      drug_unit: DOSE_QUANTITY_TYPE.TABLET,
+      dosage_form: "tablets 4 mg",
+      drug_amount: 20,
       id: 35,
       doses: [
         {
           recommended_dose: {
             label: "1 comp por 12 kg",
-            measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+            measure: DOSE_QUANTITY_TYPE.TABLET,
             unit: 1,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
             frecuency_unit: 8,
@@ -1838,11 +1838,11 @@ export const VADEMECUM_DATA: Drug[] = [
             measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
             unit: 4,
             volume: 1,
-            volume_measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+            volume_measure: DOSE_QUANTITY_TYPE.TABLET,
           },
           max_dose: {
             label: "2 comp",
-            measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+            measure: DOSE_QUANTITY_TYPE.TABLET,
             unit: 2,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
             frecuency_unit: 8,
@@ -1851,15 +1851,15 @@ export const VADEMECUM_DATA: Drug[] = [
       ],
     },
     {
-      drugUnit: DOSE_QUANTITY_TYPE.COMPRIMIDO,
-      dosageForm: "Comprimidos 8 mg",
-      drugAmount: 20,
+      drug_unit: DOSE_QUANTITY_TYPE.TABLET,
+      dosage_form: "tablets 8 mg",
+      drug_amount: 20,
       id: 36,
       doses: [
         {
           recommended_dose: {
             label: "1 comp por 24 kg",
-            measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+            measure: DOSE_QUANTITY_TYPE.TABLET,
             unit: 1,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
             frecuency_unit: 8,
@@ -1869,11 +1869,11 @@ export const VADEMECUM_DATA: Drug[] = [
             measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
             unit: 8,
             volume: 1,
-            volume_measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+            volume_measure: DOSE_QUANTITY_TYPE.TABLET,
           },
           max_dose: {
             label: "1 comp",
-            measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+            measure: DOSE_QUANTITY_TYPE.TABLET,
             unit: 1,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
             frecuency_unit: 8,
@@ -1882,15 +1882,15 @@ export const VADEMECUM_DATA: Drug[] = [
       ],
     },
     {
-      drugUnit: DOSE_QUANTITY_TYPE.COMPRIMIDO,
-      dosageForm: "Comprimidos 40 mg",
-      drugAmount: 20,
+      drug_unit: DOSE_QUANTITY_TYPE.TABLET,
+      dosage_form: "tablets 40 mg",
+      drug_amount: 20,
       id: 37,
       doses: [
         {
           recommended_dose: {
             label: "1/2 comp",
-            measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+            measure: DOSE_QUANTITY_TYPE.TABLET,
             unit: 0.5,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
             frecuency_unit: 12,
@@ -1900,11 +1900,11 @@ export const VADEMECUM_DATA: Drug[] = [
             measure: DOSE_QUANTITY_TYPE.MILIGRAMS,
             unit: 40,
             volume: 1,
-            volume_measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+            volume_measure: DOSE_QUANTITY_TYPE.TABLET,
           },
           max_dose: {
             label: "1/2 comp",
-            measure: DOSE_QUANTITY_TYPE.COMPRIMIDO,
+            measure: DOSE_QUANTITY_TYPE.TABLET,
             unit: 0.5,
             frecuency_type: DOSE_FRECUENCY_TYPE.HOURS,
             frecuency_unit: 12,

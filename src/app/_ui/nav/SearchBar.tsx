@@ -1,3 +1,4 @@
+"use client";
 import { ISearchBar } from "@/app/page";
 import { useState } from "react";
 import { DosePresentation, Drug, Presentation, TargetPopulation, VADEMECUM_DATA } from "../../../../data";
@@ -32,30 +33,29 @@ const DisplayTargetPopulation = (
         <div key={`${presentationId}${target_population?.label}`}>
             {
                 target_population.from && target_population.to && (
-                    <>
+                    <div>
                         Target Population: {target_population?.from}{" "}
                         {target_population?.from_type} {target_population?.to}{" "}
                         {target_population?.to_type}
-                    </>
+                    </div>
                 )
             }
             {target_population.from && (
-                <>
+                <div>
                     Target Population: Beginning from {target_population?.from}{" "}
                     {target_population?.from_type}
-                </>
+                </div>
             )
             }
             {target_population.to && (
-                <>
+                <div>
                     Target Population: Up to {target_population?.to}{" "}
                     {target_population?.to_type}
-                </>
+                </div>
             )
             }
         </div>
     )
-    // return <></>;
 };
 
 const generateDosePresentationId = (dosePresentation: DosePresentation): string | null => {
@@ -111,13 +111,13 @@ const DrugItemPresentation = (item: Drug) =>
                 className="text-lg font-bold"
                 id={`result-item-${item.id}-drug-presentation-presentations-${presentation.id}-dosage-form`}
             >
-                {presentation.dosageForm}
+                {presentation.dosage_form}
             </h3>
             <p
                 className="text-sm"
                 id={`result-item-${item.id}-drug-presentation-presentations-${presentation.id}-drug-unit-and-amount`}
             >
-                {presentation.drugAmount} {presentation.drugUnit}
+                {presentation.drug_amount} {presentation.drug_unit}
             </p>
             {DrugItemPresentationDoses(presentation.doses, presentation.id)}
         </li>
@@ -133,7 +133,7 @@ const DrugPresentation = (item: Drug) => (
             {item.name}
         </h3>
         <p className="text-sm" id="result-item-drug-presentation-active-ingredient">
-            Active Ingredient: {item.activeIngredient}
+            Active Ingredient: {item.active_ingredient}
         </p>
         <p>
             Brand: {item.brand.type} {item.brand.name}
@@ -157,14 +157,13 @@ const Results = ({ query }: IResults): JSX.Element => {
     const filteredResults: Drug[] = resultsDrug.filter(
         (item: Drug) =>
             item.name.toLowerCase().includes(query.toLowerCase()) ||
-            item.activeIngredient.toLowerCase().includes(query.toLowerCase()) ||
+            item.active_ingredient.toLowerCase().includes(query.toLowerCase()) ||
             item.brand.name.toLowerCase().includes(query.toLowerCase()
             )
     );
 
     return (
         <div className="flex flex-col items-center" id="results-container">
-            <h2 className="text-2xl font-bold mt-12 mb-6">Results</h2>
             {filteredResults.length
                 ? filteredResults.map((item: Drug) => DrugPresentation(item))
                 : "No results found"}
