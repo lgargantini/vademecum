@@ -7,7 +7,7 @@ export interface ISearchBar {
 export default function Home() {
   return (
     <nav className="flex flex-col items-center justify-between p-24">
-      <SearchBar search_label={"Vademecum - Main Search"} />
+      <SearchBar search_label={"Vademecum - Search"} />
     </nav>
   );
 }
